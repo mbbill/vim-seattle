@@ -5,7 +5,7 @@
  * Beautiful colors - in my opinion.
  * Cterm colors offline generator - change the RGB value and generate cterm 256 colors, simple.
  * Color palette for customization - never been so easy.
- * Syntax highlight preview - WYSIWYG
+ * Syntax highlighting preview - WYSIWYG
 
 ### Screen Shots
 #### Color Palette
