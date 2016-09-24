@@ -14,19 +14,13 @@
 " To Update Cterm Color After Modifying RGB Color:
 " :call SeattleNeon()
 
-" {{{ :-)
-if v:version < 800
-    echoerr "seattle colorscheme requires vim 8.0 and later
-    finish
-endif
-
+" {{{
 set background=dark
 if exists("g:syntax_on")
     syntax reset
 endif
 hi clear
 let g:colors_name="seattle"
-set t_Co=256
 " }}}
 
 " Color Palette
@@ -82,8 +76,9 @@ highlight CP_3b  guibg=#EE799F guifg=#FFFFFF
 " GUI END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 if !has("gui_running")
+set t_Co=256
 " Lines between CTERM BEGIN and CTERM END will be re-written,
-" so DO NOT MODIFY!
+" so DO NOT EDIT! Change GUI colors then call SeattleNeon()
 " CTERM BEGIN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 highlight Normal ctermfg=252 ctermbg=235
 highlight CP_01  ctermfg=252 ctermbg=235
@@ -133,56 +128,56 @@ endif " has gui_running
 
 " Real color definitions starts from here
 " Syntax highlighting groups, using "!" to avoid E414
-highlight! link Normal CP_01
-highlight! link Comment CP_02
-highlight! link Constant CP_1b
-highlight! link Identifier CP_16
-highlight! link Function CP_18
-highlight! link Type CP_1a
-highlight! link Keyword CP_12
-highlight! link PreProc CP_1b
-highlight! link Statement CP_14
-highlight! link Special CP_16
-highlight! link Underlined CP_03
-highlight! link Ignore CP_02
-highlight! link Error CP_21
-highlight! link Todo CP_22
-highlight! link Directory CP_18
-highlight! link Title CP_14
+highlight! link Normal       CP_01
+highlight! link Comment      CP_02
+highlight! link Constant     CP_1b
+highlight! link Identifier   CP_16
+highlight! link Function     CP_18
+highlight! link Type         CP_1a
+highlight! link Keyword      CP_12
+highlight! link PreProc      CP_1b
+highlight! link Statement    CP_14
+highlight! link Special      CP_16
+highlight! link Underlined   CP_03
+highlight! link Ignore       CP_02
+highlight! link Error        CP_21
+highlight! link Todo         CP_22
+highlight! link Directory    CP_18
+highlight! link Title        CP_14
 " Others
-highlight! link SignColumn CP_01
-highlight! link Cursor CP_04
-highlight! link CursorLine CP_05
+highlight! link SignColumn   CP_01
+highlight! link Cursor       CP_04
+highlight! link CursorLine   CP_05
 highlight! link CursorColumn CP_05
-highlight! link ErrorMsg CP_31
-highlight! link FoldColumn CP_08
-highlight! link Folded CP_08
-highlight! link IncSearch CP_28
-highlight! link LineNr CP_06
-highlight! link MatchParen CP_03
-highlight! link ModeMsg CP_18
-highlight! link MoreMsg CP_16
-highlight! link NonText CP_02
-highlight! link Pmenu CP_28
-highlight! link PmenuSel CP_35
-highlight! link Question CP_1a
-highlight! link Search CP_39
-highlight! link SpecialKey CP_15
-highlight! link StatusLine CP_24
+highlight! link ErrorMsg     CP_31
+highlight! link FoldColumn   CP_08
+highlight! link Folded       CP_08
+highlight! link IncSearch    CP_28
+highlight! link LineNr       CP_06
+highlight! link MatchParen   CP_03
+highlight! link ModeMsg      CP_18
+highlight! link MoreMsg      CP_16
+highlight! link NonText      CP_02
+highlight! link Pmenu        CP_28
+highlight! link PmenuSel     CP_35
+highlight! link Question     CP_1a
+highlight! link Search       CP_39
+highlight! link SpecialKey   CP_15
+highlight! link StatusLine   CP_24
 highlight! link StatusLineNC CP_06
-highlight! link VertSplit CP_07
-highlight! link Visual CP_08
-highlight! link WarningMsg CP_11
-highlight! link WildMenu CP_05
-highlight! link colorcolumn CP_06
-highlight! link TabLine CP_18
-highlight! link TabLineFill CP_06
-highlight! link TabLineSel CP_28
+highlight! link VertSplit    CP_07
+highlight! link Visual       CP_08
+highlight! link WarningMsg   CP_11
+highlight! link WildMenu     CP_05
+highlight! link colorcolumn  CP_06
+highlight! link TabLine      CP_18
+highlight! link TabLineFill  CP_06
+highlight! link TabLineSel   CP_28
 " Diff
-highlight! link DiffAdd CP_26
-highlight! link DiffChange CP_28
-highlight! link DiffDelete CP_05
-highlight! link DiffText CP_2b
+highlight! link DiffAdd      CP_26
+highlight! link DiffChange   CP_28
+highlight! link DiffDelete   CP_05
+highlight! link DiffText     CP_2b
 
 " {{{ Unimportant stuff
 let s:gray_scale_json = '{
@@ -325,25 +320,23 @@ function! s:process_line(line)
 endfunction
 
 function! SeattleLightsUp()
+    if v:version < 800
+        echoerr "The magic power needs Vim 8.0 and later."
+        return
+    endif
     let current_filename = expand('%:p')
     let lines = readfile(current_filename)
     for i in lines
         " highlight link
         let hi_name = matchstr(i, '^highlight!\s\+link\s\+\zs\S\+\ze')
         if hi_name != ""
-            exec "syn match " . hi_name . ' "^highlight! link '.hi_name.' "'
+            exec "syn match " . hi_name . ' "^highlight! link '.hi_name.'\s*"'
             continue
         endif
         " normal highlight
         let hi_name = matchstr(i, '^highlight\s\+\zs\S\+\ze')
         if hi_name != ""
-            exec "syn match " . hi_name . ' "^highlight '.hi_name.' "'
-            continue
-        endif
-        " delete this later
-        let hi_name = matchstr(i, '^highlight!\s\+\zs\S\+\ze')
-        if hi_name != ""
-            exec "syn match " . hi_name . ' "^highlight! '.hi_name.' "'
+            exec "syn match " . hi_name . ' "^highlight '.hi_name.'\s*"'
             continue
         endif
     endfor
@@ -356,6 +349,10 @@ function! SeattleLightsUp()
 endfunction
 
 function! SeattleNeon()
+    if v:version < 800
+        echoerr "The magic power needs Vim 8.0 and later."
+        return
+    endif
     let saved_cursor = getcurpos()
     let gui_begin = search("^\" GUI BEGIN")
     let gui_end = search("^\" GUI END")
