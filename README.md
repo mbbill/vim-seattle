@@ -16,3 +16,6 @@
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/841602/18620192/4c8ed1e4-7dc2-11e6-80e2-7612761f6c67.png" width="800">
 #### JavaScript
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/841602/18620194/50e0d274-7dc2-11e6-9c63-33e9b73b3494.png" width="800">
+
+### Customization How-to
+ * Open colors/seattle.vim and follow the instructions.
