@@ -9,10 +9,10 @@
 "                                                  "
 "
 " To Enable Color Preview:
-" :call SeattleLightsUp()
+" :SeattleLightsUp
 "
 " To Update Cterm Color After Modifying RGB Color:
-" :call SeattleNeon()
+" :SeattleNeon
 
 " {{{
 set background=dark
@@ -38,38 +38,38 @@ highlight CP_07  guifg=#4D4D4D guibg=#4D4D4D
 highlight CP_08  guifg=NONE    guibg=#666666
 highlight CP_04  guifg=#292929 guibg=#CCCCCC
 
-highlight CP_11  guifg=#EC5F67
-highlight CP_12  guifg=#F99157
+highlight CP_11  guifg=#F06A6A
+highlight CP_12  guifg=#F69A42
 highlight CP_13  guifg=#FAC863
 highlight CP_14  guifg=#DDA790
 highlight CP_15  guifg=#AB7967
 highlight CP_16  guifg=#99C794
 highlight CP_17  guifg=#5FB3B3
-highlight CP_18  guifg=#87C0E0
+highlight CP_18  guifg=#63B0DC
 highlight CP_19  guifg=#6699CC
 highlight CP_1a  guifg=#C594C5
 highlight CP_1b  guifg=#EE799F
 
-highlight CP_21  guibg=#EC5F67 guifg=#000000
-highlight CP_22  guibg=#F99157 guifg=#000000
+highlight CP_21  guibg=#F06A6A guifg=#000000
+highlight CP_22  guibg=#F69A42 guifg=#000000
 highlight CP_23  guibg=#FAC863 guifg=#000000
 highlight CP_24  guibg=#DDA790 guifg=#000000
 highlight CP_25  guibg=#AB7967 guifg=#000000
 highlight CP_26  guibg=#99C794 guifg=#000000
 highlight CP_27  guibg=#5FB3B3 guifg=#000000
-highlight CP_28  guibg=#87C0E0 guifg=#000000
+highlight CP_28  guibg=#63B0DC guifg=#000000
 highlight CP_29  guibg=#6699CC guifg=#000000
 highlight CP_2a  guibg=#C594C5 guifg=#000000
 highlight CP_2b  guibg=#EE799F guifg=#000000
 
-highlight CP_31  guibg=#EC5F67 guifg=#FFFFFF
-highlight CP_32  guibg=#F99157 guifg=#FFFFFF
+highlight CP_31  guibg=#F06A6A guifg=#FFFFFF
+highlight CP_32  guibg=#F69A42 guifg=#FFFFFF
 highlight CP_33  guibg=#FAC863 guifg=#FFFFFF
 highlight CP_34  guibg=#DDA790 guifg=#FFFFFF
 highlight CP_35  guibg=#AB7967 guifg=#FFFFFF
 highlight CP_36  guibg=#99C794 guifg=#FFFFFF
 highlight CP_37  guibg=#5FB3B3 guifg=#FFFFFF
-highlight CP_38  guibg=#87C0E0 guifg=#FFFFFF
+highlight CP_38  guibg=#63B0DC guifg=#FFFFFF
 highlight CP_39  guibg=#6699CC guifg=#FFFFFF
 highlight CP_3a  guibg=#C594C5 guifg=#FFFFFF
 highlight CP_3b  guibg=#EE799F guifg=#FFFFFF
@@ -319,10 +319,15 @@ function! s:process_line(line)
     return result
 endfunction
 
-function! SeattleLightsUp()
+function! s:SeattleLightsUp()
     if v:version < 800
         echoerr "The magic power needs Vim 8.0 and later."
         return
+    endif
+    if exists("s:run_once")
+        return
+    else
+        let s:run_once = 1
     endif
     let current_filename = expand('%:p')
     let lines = readfile(current_filename)
@@ -348,7 +353,7 @@ function! SeattleLightsUp()
         \'c.\{'.n.'}',99))}))})
 endfunction
 
-function! SeattleNeon()
+function! s:SeattleNeon()
     if v:version < 800
         echoerr "The magic power needs Vim 8.0 and later."
         return
@@ -384,5 +389,8 @@ function! SeattleNeon()
     call setpos('.', saved_cursor)
     call SeattleLightsUp()
 endfunction
+
+command!    SeattleLightsUp     so % | call s:SeattleLightsUp()
+command!    SeattleNeon         so % | call s:SeattleNeon()
 " }}}
 " vim: set ts=4 et ft=vim ff=unix fdm=marker:
