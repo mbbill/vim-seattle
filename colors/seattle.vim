@@ -97,7 +97,7 @@ highlight CP_14  ctermfg=180
 highlight CP_15  ctermfg=137
 highlight CP_16  ctermfg=114
 highlight CP_17  ctermfg=73
-highlight CP_18  ctermfg=110
+highlight CP_18  ctermfg=74
 highlight CP_19  ctermfg=68
 highlight CP_1a  ctermfg=176
 highlight CP_1b  ctermfg=211
@@ -108,7 +108,7 @@ highlight CP_24  ctermbg=180 ctermfg=16
 highlight CP_25  ctermbg=137 ctermfg=16
 highlight CP_26  ctermbg=114 ctermfg=16
 highlight CP_27  ctermbg=73 ctermfg=16
-highlight CP_28  ctermbg=110 ctermfg=16
+highlight CP_28  ctermbg=74 ctermfg=16
 highlight CP_29  ctermbg=68 ctermfg=16
 highlight CP_2a  ctermbg=176 ctermfg=16
 highlight CP_2b  ctermbg=211 ctermfg=16
@@ -119,7 +119,7 @@ highlight CP_34  ctermbg=180 ctermfg=231
 highlight CP_35  ctermbg=137 ctermfg=231
 highlight CP_36  ctermbg=114 ctermfg=231
 highlight CP_37  ctermbg=73 ctermfg=231
-highlight CP_38  ctermbg=110 ctermfg=231
+highlight CP_38  ctermbg=74 ctermfg=231
 highlight CP_39  ctermbg=68 ctermfg=231
 highlight CP_3a  ctermbg=176 ctermfg=231
 highlight CP_3b  ctermbg=211 ctermfg=231
@@ -162,7 +162,7 @@ highlight! link Pmenu        CP_28
 highlight! link PmenuSel     CP_35
 highlight! link Question     CP_1a
 highlight! link Search       CP_39
-highlight! link SpecialKey   CP_15
+highlight! link SpecialKey   CP_02
 highlight! link StatusLine   CP_24
 highlight! link StatusLineNC CP_06
 highlight! link VertSplit    CP_07
@@ -387,7 +387,7 @@ function! s:SeattleNeon()
     endif
     call append(cterm_begin-1, cterm_lines)
     call setpos('.', saved_cursor)
-    call SeattleLightsUp()
+    call s:SeattleLightsUp()
 endfunction
 
 command!    SeattleLightsUp     so % | call s:SeattleLightsUp()
