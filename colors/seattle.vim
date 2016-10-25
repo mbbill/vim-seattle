@@ -27,16 +27,16 @@ let g:colors_name="seattle"
 " GUI BEGIN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 highlight Normal guifg=#cccccc guibg=#292929
 
-highlight CP_01  guifg=#CCCCCC guibg=#292929
-highlight CP_02  guifg=#7f7f7f guibg=#292929 gui=italic
-highlight CP_03  guifg=#87C0E0 guibg=#292929 gui=underline
-
-highlight CP_09  guifg=#AAAAAA guibg=#333333
-highlight CP_06  guifg=#7F7F7F guibg=#333333
+highlight CP_01  guifg=#CCCCCC
+highlight CP_02  guifg=#7f7f7f gui=italic
+highlight CP_03  guifg=#87C0E0 gui=underline
+highlight CP_04  guifg=#292929 guibg=#CCCCCC
 highlight CP_05  guifg=NONE    guibg=#4D4D4D
+highlight CP_06  guifg=#7F7F7F guibg=#333333
 highlight CP_07  guifg=#4D4D4D guibg=#4D4D4D
 highlight CP_08  guifg=NONE    guibg=#666666
-highlight CP_04  guifg=#292929 guibg=#CCCCCC
+highlight CP_09  guifg=#AAAAAA guibg=#333333
+highlight CP_0A  guifg=#7f7f7f
 
 highlight CP_11  guifg=#F06A6A
 highlight CP_12  guifg=#F69A42
@@ -81,15 +81,16 @@ set t_Co=256
 " so DO NOT EDIT! Change GUI colors then call SeattleNeon()
 " CTERM BEGIN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 highlight Normal ctermfg=252 ctermbg=235
-highlight CP_01  ctermfg=252 ctermbg=235
-highlight CP_02  ctermfg=244 ctermbg=235 cterm=NONE
-highlight CP_03  ctermfg=110 ctermbg=235 cterm=underline
-highlight CP_09  ctermfg=248 ctermbg=236
-highlight CP_06  ctermfg=244 ctermbg=236
+highlight CP_01  ctermfg=252
+highlight CP_02  ctermfg=244 cterm=NONE
+highlight CP_03  ctermfg=110 cterm=underline
+highlight CP_04  ctermfg=235 ctermbg=252
 highlight CP_05  ctermfg=NONE    ctermbg=239
+highlight CP_06  ctermfg=244 ctermbg=236
 highlight CP_07  ctermfg=239 ctermbg=239
 highlight CP_08  ctermfg=NONE    ctermbg=241
-highlight CP_04  ctermfg=235 ctermbg=252
+highlight CP_09  ctermfg=248 ctermbg=236
+highlight CP_0A  ctermfg=244
 highlight CP_11  ctermfg=203
 highlight CP_12  ctermfg=209
 highlight CP_13  ctermfg=221
@@ -157,12 +158,12 @@ highlight! link LineNr       CP_06
 highlight! link MatchParen   CP_03
 highlight! link ModeMsg      CP_18
 highlight! link MoreMsg      CP_16
-highlight! link NonText      CP_02
+highlight! link NonText      CP_15
 highlight! link Pmenu        CP_28
 highlight! link PmenuSel     CP_35
 highlight! link Question     CP_1a
 highlight! link Search       CP_39
-highlight! link SpecialKey   CP_02
+highlight! link SpecialKey   CP_0A
 highlight! link StatusLine   CP_24
 highlight! link StatusLineNC CP_06
 highlight! link VertSplit    CP_07
