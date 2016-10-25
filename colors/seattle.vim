@@ -15,6 +15,10 @@
 " :SeattleNeon
 
 " {{{
+" CMD is not supported currently.
+if &term == "win32"
+    finish
+endif
 set background=dark
 if exists("g:syntax_on")
     syntax reset
